@@ -89,7 +89,7 @@ module CopperEgg
 
     # returns an array of probe_hashes, or nil
     def get_probelist()
-      Chef::Log.info "get_probelist"
+      Chef::Log.info "get_probelist" 
       return api_request('get', 'probes.json')
     end
 
@@ -226,7 +226,8 @@ module CopperEgg
             end
             response_body = valid_json?(response.body)
             if response_body == nil
-              raise "CopperEgg::API invalid JSON response ... #{request}  #{request_uri}"
+              raise "CopperEgg::API invalid JSON response ... #{request}  #{request_uri}" 
+              return nil
             else
               return response_body
             end
@@ -235,7 +236,8 @@ module CopperEgg
           exception_try_count += 1
           if exception_try_count > attempts
             #log "#{e.inspect}"
-            raise "CopperEgg::API #{e} ... #{exception_try_count} retries: #{request}  #{request_uri}"
+            raise "CopperEgg::API #{e} ... #{exception_try_count} retries: #{request}  #{request_uri}" 
+            return nil
           else
             if $verbose == true
               puts "\nGet: exception: retrying\n"
@@ -251,7 +253,8 @@ module CopperEgg
         sleep 1.0
       end
 #     need to fail here
-      raise "CopperEgg::API ... exceeded #{connect_try_count} retries: #{request}  #{request_uri}"
+      raise "CopperEgg::API ... exceeded #{connect_try_count} retries: #{request}  #{request_uri}" 
+      return nil
     end
   end
 end
