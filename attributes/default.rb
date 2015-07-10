@@ -73,3 +73,6 @@ default[:copperegg][:remove_on_uninstall] = false
 
 # Create an external SSH probe for this node.
 default[:copperegg][:create_sshprobe] = false
+
+# An Integer which can be set to specify what UID is used for revealcloud user
+default[:copperegg][:uid] = nil

@@ -103,6 +103,7 @@ if platform?('redhat', 'centos', 'fedora', 'ubuntu', 'debian', 'amazon')
         export RC_PROXY="#{node[:copperegg][:proxy] || ''}"
         export RC_OOM_PROTECT="#{node[:copperegg][:oom_protect] || ''}"
         export RC_UUID="#{tmpfqdn}"
+        export RC_UID="#{node[:copperegg][:uid]}"
         /tmp/revealcloud_installer.sh
     EOH
     action :run
